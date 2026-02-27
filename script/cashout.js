@@ -1,38 +1,43 @@
+document.getElementById("cashout-btn").addEventListener("click", function() {
 
-  document.getElementById("cashout").addEventListener("click", function (){
+  const inputNumber = document.getElementById("input-number");
+  const agentNumber = inputNumber.value;
+    
+  if (agentNumber === '01726001234'){
+    console.log("correct agent")
+    }
+    else {
+      alert ('wrong agent Number')
+      console.log('wrong agent number');
+      return;
+    }
 
+    const inputAmount = document.getElementById('input-amount');
+    const cashoutAmount = inputAmount.value;
+    // console.log (cashoutAmount);
 
-const agentNumber = document.getElementById("input-number");
-//1 get the agent number
-//2 get the amount and convert to number
+    const balanceinitial = document.getElementById("balance");
+    const balance = balanceinitial.innerText;
+    const newBalance = Number(balance) - Number(cashoutAmount);
+    
 
-const agentNum = agentNumber.value;
+    if (newBalance < 0) {
+      alert ("insufficiant Balance");
+      return;
 
-if (agentNum === "01726001234"){
-  console.log (agentNum);
- }
-else {
-  alert("Invalid agent Number");
-  return;
-}
+    } else {
+      console.log("New Balance: ", newBalance);
+      balanceinitial.innerText = newBalance;
+      console.log(newBalance);
+    }
 
-const inputAmount = document.getElementById("input-amount");
-const cashoutAmount = inputAmount.value;
-console.log (cashoutAmount);
+    const inputPin = document.getElementById('cashout-pin');
+    const cashoutPin = inputPin.value;
+    if (cashoutPin === '1234') {
 
-//3 get current balance
+    } else {
+      alert("Wrong Pin");
+      return;
+    }
 
-  const balance = document.getElementById("balance");
-  const balanceamount = balance.innerText;
-
-  console.log ("Balance", balanceamount);
-
-  //new balance
-
-  const newBalance = Number(balanceamount) - Number(cashoutAmount);
-
-  console.log (newBalance);
-
-
-
-  })
+})
